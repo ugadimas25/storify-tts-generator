@@ -13,6 +13,7 @@ import argparse
 import io
 import json
 import os
+import random
 import textwrap
 from pathlib import Path
 
@@ -33,11 +34,14 @@ TEXT_DIR    = CONTENT_DIR / "text"
 WIDTH, HEIGHT = 1080, 1920
 
 # Colors
-BG_COLOR = "#FFFFFF"
-PRIMARY_COLOR = "#2E3A7D"  # Dark blue (matching app theme)
-ACCENT_COLOR = "#4CAF50"   # Green badge
-TEXT_COLOR = "#333333"
-SUBTITLE_COLOR = "#666666"
+THEME_COLORS = [
+    {"primary": "#a6611a", "rgb": (166, 97, 26)},
+    {"primary": "#dfc27d", "rgb": (223, 194, 125)},
+    {"primary": "#f5f5f5", "rgb": (245, 245, 245)},
+    {"primary": "#80cdc1", "rgb": (128, 205, 193)},
+    {"primary": "#018571", "rgb": (1, 133, 113)},
+]
+ACCENT_COLOR = "#4CAF50"
 BADGE_TEXT = "#FFFFFF"
 
 
@@ -113,121 +117,188 @@ def generate_template(
     output_path: Path,
 ) -> Path:
     """
-    Generate a branded book template image similar to the Pewaca app.
+    Generate a branded book template image for social media.
 
     Layout (1080x1920):
-    - Top gradient/solid background
+    - Top gradient background (random theme color)
     - Centered book cover with shadow
-    - Title
-    - Author
-    - Category badge + duration
+    - Title, Author, Category badge + duration
+    - CTA message + app.storify.asia
+    - Bottom bar with STORIFY branding
     """
-    img = Image.new("RGB", (WIDTH, HEIGHT), BG_COLOR)
+    # Pick random theme
+    theme = random.choice(THEME_COLORS)
+    tr, tg, tb = theme["rgb"]
+
+    # Derive readable text colors based on theme brightness
+    brightness = (tr * 299 + tg * 587 + tb * 114) / 1000
+    if brightness > 180:
+        # Light theme — use dark text
+        title_color = (40, 40, 60)
+        subtitle_color = (80, 80, 100)
+        cta_color = (100, 100, 110)
+        url_color = (40, 40, 60)
+        bar_text = "white"
+    else:
+        # Dark theme — use dark text on white area below
+        title_color = (tr, tg, tb)
+        subtitle_color = (100, 100, 110)
+        cta_color = (100, 100, 110)
+        url_color = (tr, tg, tb)
+        bar_text = "white"
+
+    img = Image.new("RGB", (WIDTH, HEIGHT), "#FFFFFF")
     draw = ImageDraw.Draw(img)
 
     # --- Background gradient (top section) ---
-    gradient_height = 1100
+    gradient_height = 1050
     for y in range(gradient_height):
         ratio = y / gradient_height
-        r = int(46 + (255 - 46) * ratio)   # #2E -> FF
-        g = int(58 + (255 - 58) * ratio)   # #3A -> FF
-        b = int(125 + (255 - 125) * ratio) # #7D -> FF
+        r = int(tr + (255 - tr) * ratio)
+        g = int(tg + (255 - tg) * ratio)
+        b = int(tb + (255 - tb) * ratio)
         draw.line([(0, y), (WIDTH, y)], fill=(r, g, b))
 
     # --- Book cover (centered, with shadow) ---
-    cover_max_w, cover_max_h = 600, 800
+    cover_max_w, cover_max_h = 580, 780
     cover_resized = cover.copy()
     cover_resized.thumbnail((cover_max_w, cover_max_h), Image.LANCZOS)
     cw, ch = cover_resized.size
 
     cover_x = (WIDTH - cw) // 2
-    cover_y = 160
+    cover_y = 100
 
     # Shadow
-    shadow = Image.new("RGBA", (cw + 30, ch + 30), (0, 0, 0, 0))
+    shadow = Image.new("RGBA", (cw + 40, ch + 40), (0, 0, 0, 0))
     shadow_draw = ImageDraw.Draw(shadow)
     shadow_draw.rounded_rectangle(
-        [10, 10, cw + 20, ch + 20], radius=12, fill=(0, 0, 0, 80)
+        [12, 12, cw + 28, ch + 28], radius=16, fill=(0, 0, 0, 70)
     )
-    shadow = shadow.filter(ImageFilter.GaussianBlur(15))
-    img.paste(shadow.convert("RGB"), (cover_x - 10, cover_y + 5), shadow.split()[3])
+    shadow = shadow.filter(ImageFilter.GaussianBlur(18))
+    img.paste(shadow.convert("RGB"), (cover_x - 14, cover_y + 8), shadow.split()[3])
 
     # Cover with rounded corners mask
-    cover_rgba = cover_resized.convert("RGBA")
     mask = Image.new("L", (cw, ch), 0)
     mask_draw = ImageDraw.Draw(mask)
-    mask_draw.rounded_rectangle([0, 0, cw, ch], radius=12, fill=255)
+    mask_draw.rounded_rectangle([0, 0, cw, ch], radius=14, fill=255)
     img.paste(cover_resized, (cover_x, cover_y), mask)
 
+    # --- Fonts ---
+    font_title = _load_font(56, bold=True)
+    font_author = _load_font(38)
+    font_badge = _load_font(30, bold=True)
+    font_cta = _load_font(38)
+    font_url = _load_font(44, bold=True)
+    font_brand = _load_font(32, bold=True)
+    font_tagline = _load_font(24)
+
     # --- Title ---
-    font_title = _load_font(52, bold=True)
-    font_author = _load_font(36)
-    font_badge = _load_font(28, bold=True)
-    font_desc_label = _load_font(30)
-
     text_y = cover_y + ch + 40
-
-    # Word-wrap title
-    wrapped_title = textwrap.fill(title, width=28)
+    wrapped_title = textwrap.fill(title, width=26)
     title_bbox = draw.multiline_textbbox((0, 0), wrapped_title, font=font_title)
     title_w = title_bbox[2] - title_bbox[0]
     title_h = title_bbox[3] - title_bbox[1]
-    title_x = (WIDTH - title_w) // 2
-
     draw.multiline_text(
-        (title_x, text_y), wrapped_title,
-        fill=PRIMARY_COLOR, font=font_title, align="center"
+        ((WIDTH - title_w) // 2, text_y), wrapped_title,
+        fill=title_color, font=font_title, align="center"
     )
 
     # --- Author ---
-    author_y = text_y + title_h + 24
+    author_y = text_y + title_h + 16
     author_bbox = draw.textbbox((0, 0), author, font=font_author)
     author_w = author_bbox[2] - author_bbox[0]
     draw.text(
         ((WIDTH - author_w) // 2, author_y), author,
-        fill=SUBTITLE_COLOR, font=font_author
+        fill=subtitle_color, font=font_author
     )
 
     # --- Category badge + duration ---
     badge_y = author_y + 60
     badge_text = category
     badge_bbox = draw.textbbox((0, 0), badge_text, font=font_badge)
-    badge_w = badge_bbox[2] - badge_bbox[0] + 40
-    badge_h = badge_bbox[3] - badge_bbox[1] + 20
-    badge_x = (WIDTH - badge_w) // 2 - 50
+    badge_text_w = badge_bbox[2] - badge_bbox[0]
+    badge_text_h = badge_bbox[3] - badge_bbox[1]
+    badge_text_top = badge_bbox[1]  # top offset from textbbox
+    pad_x, pad_y = 24, 16
+    badge_w = badge_text_w + pad_x * 2
+    badge_h = badge_text_h + pad_y * 2
+
+    duration_text = "\u23F1 3 min"
+    dur_bbox = draw.textbbox((0, 0), duration_text, font=font_badge)
+    dur_w = dur_bbox[2] - dur_bbox[0]
+    dur_text_top = dur_bbox[1]
+
+    total_w = badge_w + 18 + dur_w
+    badge_x = (WIDTH - total_w) // 2
 
     _draw_rounded_rect(
         draw, [badge_x, badge_y, badge_x + badge_w, badge_y + badge_h],
         radius=badge_h // 2, fill=ACCENT_COLOR
     )
+    # Center text vertically in badge (subtract textbbox top offset)
+    text_draw_y = badge_y + pad_y - badge_text_top
     draw.text(
-        (badge_x + 20, badge_y + 8), badge_text,
+        (badge_x + pad_x, text_draw_y), badge_text,
         fill=BADGE_TEXT, font=font_badge
     )
+    # Align duration vertically with badge text
+    dur_draw_y = badge_y + pad_y - dur_text_top
+    draw.text(
+        (badge_x + badge_w + 18, dur_draw_y), duration_text,
+        fill=subtitle_color, font=font_badge
+    )
 
-    # Duration text next to badge
-    duration_text = "Audiobook"
-    dur_bbox = draw.textbbox((0, 0), duration_text, font=font_desc_label)
-    dur_x = badge_x + badge_w + 20
-    draw.text((dur_x, badge_y + 8), duration_text, fill=SUBTITLE_COLOR, font=font_desc_label)
+    # --- CTA Message ---
+    cta_y = badge_y + badge_h + 50
+    cta_text = "Mari dengarkan buku yang\nanda suka di"
+    cta_bbox = draw.multiline_textbbox((0, 0), cta_text, font=font_cta)
+    cta_w = cta_bbox[2] - cta_bbox[0]
+    cta_h = cta_bbox[3] - cta_bbox[1]
+    draw.multiline_text(
+        ((WIDTH - cta_w) // 2, cta_y), cta_text,
+        fill=cta_color, font=font_cta, align="center"
+    )
 
-    # --- Storify branding at bottom ---
-    font_brand = _load_font(32, bold=True)
+    # App URL
+    url_text = "app.storify.asia"
+    url_y = cta_y + cta_h + 16
+    url_bbox = draw.textbbox((0, 0), url_text, font=font_url)
+    url_w = url_bbox[2] - url_bbox[0]
+    draw.text(
+        ((WIDTH - url_w) // 2, url_y), url_text,
+        fill=url_color, font=font_url
+    )
+
+    # --- Bottom branding bar ---
+    bar_h = 160
+    bar_y = HEIGHT - bar_h
+    draw.rectangle([0, bar_y, WIDTH, HEIGHT], fill=(tr, tg, tb))
+
+    font_brand = _load_font(48, bold=True)
+    font_tagline = _load_font(32)
+
     brand_text = "STORIFY"
     brand_bbox = draw.textbbox((0, 0), brand_text, font=font_brand)
     brand_w = brand_bbox[2] - brand_bbox[0]
-    draw.text(
-        ((WIDTH - brand_w) // 2, HEIGHT - 120), brand_text,
-        fill=PRIMARY_COLOR, font=font_brand
-    )
+    brand_h = brand_bbox[3] - brand_bbox[1]
 
-    font_tagline = _load_font(24)
     tagline = "Dengarkan ringkasan buku favoritmu"
     tag_bbox = draw.textbbox((0, 0), tagline, font=font_tagline)
     tag_w = tag_bbox[2] - tag_bbox[0]
+    tag_h = tag_bbox[3] - tag_bbox[1]
+
+    gap = 8
+    total_text_h = brand_h + gap + tag_h
+    brand_y = bar_y + (bar_h - total_text_h) // 2
+    tag_y = brand_y + brand_h + gap
+
     draw.text(
-        ((WIDTH - tag_w) // 2, HEIGHT - 80), tagline,
-        fill=SUBTITLE_COLOR, font=font_tagline
+        ((WIDTH - brand_w) // 2, brand_y), brand_text,
+        fill=bar_text, font=font_brand
+    )
+    draw.text(
+        ((WIDTH - tag_w) // 2, tag_y), tagline,
+        fill=bar_text, font=font_tagline
     )
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
