@@ -6,6 +6,14 @@ src/books_phase2/
 
 # Environment & secrets
 .env
+.ig_session/
+.tiktok_session/
+
+# Social content — media files are large; only track the posted log
+src/content/audio/
+src/content/image/
+src/content/video/
+!src/content/posted.json
 
 # Python
 __pycache__/

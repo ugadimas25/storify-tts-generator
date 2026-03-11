@@ -8,3 +8,6 @@ elevenlabs
 # OCR support for scanned/image-based PDFs
 pymupdf
 google-cloud-vision
+# Social media posting
+instagrapi
+tiktok-uploader
