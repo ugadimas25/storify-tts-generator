@@ -11,3 +11,7 @@ google-cloud-vision
 # Social media posting
 instagrapi
 tiktok-uploader
+# Content generation
+Pillow
+psycopg2-binary
+qcloud-cos-v5

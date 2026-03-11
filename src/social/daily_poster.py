@@ -17,6 +17,8 @@ Usage:
     python -m src.social.daily_poster --platform ig      # Instagram only
     python -m src.social.daily_poster --platform tiktok  # TikTok only
     python -m src.social.daily_poster --item 5           # post item #5
+    python -m src.social.daily_poster --generate 99915   # generate content for book
+    python -m src.social.daily_poster --generate-all     # generate all books
     python -m src.social.daily_poster --list              # list all content
     python -m src.social.daily_poster --dry-run           # preview only
 """
@@ -161,9 +163,34 @@ def main():
                         help="Platform to post to (default: all)")
     parser.add_argument("--item", type=str, default=None,
                         help="Post specific item by ID (filename stem)")
+    parser.add_argument("--generate", type=int, default=None,
+                        help="Generate content from DB+COS for a book ID")
+    parser.add_argument("--generate-all", action="store_true",
+                        help="Generate content for all books with audio")
     parser.add_argument("--list", action="store_true", help="List all content and status")
     parser.add_argument("--dry-run", action="store_true", help="Preview without posting")
     args = parser.parse_args()
+
+    # Handle generate commands
+    if args.generate or args.generate_all:
+        from src.social.content_generator import generate_content, _get_db
+        if args.generate:
+            generate_content(args.generate, args.dry_run)
+        else:
+            conn = _get_db()
+            try:
+                cur = conn.cursor()
+                cur.execute(
+                    "SELECT id FROM public.books_list "
+                    "WHERE is_have_audio = 'yes' ORDER BY id"
+                )
+                book_ids = [r[0] for r in cur.fetchall()]
+            finally:
+                conn.close()
+            print(f"Found {len(book_ids)} books with audio")
+            ok = sum(1 for bid in book_ids if generate_content(bid, args.dry_run))
+            print(f"Done: {ok}/{len(book_ids)} generated")
+        return
 
     items = _discover_content()
     posted = _load_posted()
