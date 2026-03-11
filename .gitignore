@@ -1,6 +1,8 @@
 # Data folders (large files, not tracked)
 data/
 gutenberg_books/
+src/books/
+src/books_phase2/
 
 # Environment & secrets
 .env
