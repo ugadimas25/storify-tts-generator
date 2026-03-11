@@ -126,7 +126,7 @@ def generate_template(
     draw = ImageDraw.Draw(img)
 
     # --- Background gradient (top section) ---
-    gradient_height = 900
+    gradient_height = 1100
     for y in range(gradient_height):
         ratio = y / gradient_height
         r = int(46 + (255 - 46) * ratio)   # #2E -> FF
@@ -135,7 +135,7 @@ def generate_template(
         draw.line([(0, y), (WIDTH, y)], fill=(r, g, b))
 
     # --- Book cover (centered, with shadow) ---
-    cover_max_w, cover_max_h = 420, 560
+    cover_max_w, cover_max_h = 600, 800
     cover_resized = cover.copy()
     cover_resized.thumbnail((cover_max_w, cover_max_h), Image.LANCZOS)
     cw, ch = cover_resized.size
@@ -165,7 +165,7 @@ def generate_template(
     font_badge = _load_font(28, bold=True)
     font_desc_label = _load_font(30)
 
-    text_y = cover_y + ch + 60
+    text_y = cover_y + ch + 40
 
     # Word-wrap title
     wrapped_title = textwrap.fill(title, width=28)
@@ -211,9 +211,9 @@ def generate_template(
     dur_x = badge_x + badge_w + 20
     draw.text((dur_x, badge_y + 8), duration_text, fill=SUBTITLE_COLOR, font=font_desc_label)
 
-    # --- Pewaca branding at bottom ---
+    # --- Storify branding at bottom ---
     font_brand = _load_font(32, bold=True)
-    brand_text = "PEWACA"
+    brand_text = "STORIFY"
     brand_bbox = draw.textbbox((0, 0), brand_text, font=font_brand)
     brand_w = brand_bbox[2] - brand_bbox[0]
     draw.text(
