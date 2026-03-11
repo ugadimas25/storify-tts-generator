@@ -1,0 +1,10 @@
+pdfminer.six
+openai
+google-cloud-texttospeech
+python-dotenv
+pydantic
+tqdm
+elevenlabs
+# OCR support for scanned/image-based PDFs
+pymupdf
+google-cloud-vision

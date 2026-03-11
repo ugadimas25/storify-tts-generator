@@ -1,0 +1,27 @@
+# Data folders (large files, not tracked)
+data/
+gutenberg_books/
+
+# Environment & secrets
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+env/
+
+# Logs & temp outputs
+*.log
+generate_desc_log.txt
+upload_cos_log.txt
+
+# OS
+.DS_Store
+Thumbs.db

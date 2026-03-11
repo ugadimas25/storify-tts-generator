@@ -1,0 +1,283 @@
+Found 92 EPUB files
+Output folder : D:\b_outside\a_intesa_global_technology\Storify\Storify-Insights\api\ai-audiobook-agent\gutenberg_books\pdf
+COS target    : pewacaold-1379748683/pdf/
+
+[999_1.epub] -> 9991.pdf
+    [skip-convert] PDF already exists
+    Uploading -> pdf/9991.pdf ... done
+[999_10.epub] -> 99910.pdf
+    [skip-convert] PDF already exists
+    Uploading -> pdf/99910.pdf ... done
+[999_100.epub] -> 999100.pdf
+    [skip-convert] PDF already exists
+    Uploading -> pdf/999100.pdf ... done
+[999_11.epub] -> 99911.pdf
+    [skip-convert] PDF already exists
+    Uploading -> pdf/99911.pdf ... done
+[999_12.epub] -> 99912.pdf
+    [skip-convert] PDF already exists
+    Uploading -> pdf/99912.pdf ... done
+[999_13.epub] -> 99913.pdf
+    [skip-convert] PDF already exists
+    Uploading -> pdf/99913.pdf ... done
+[999_14.epub] -> 99914.pdf
+    [skip-convert] PDF already exists
+    Uploading -> pdf/99914.pdf ... done
+[999_15.epub] -> 99915.pdf
+    [skip-convert] PDF already exists
+    Uploading -> pdf/99915.pdf ... done
+[999_16.epub] -> 99916.pdf
+    [skip-convert] PDF already exists
+    Uploading -> pdf/99916.pdf ... done
+[999_17.epub] -> 99917.pdf
+    [skip-convert] PDF already exists
+    Uploading -> pdf/99917.pdf ... done
+[999_18.epub] -> 99918.pdf
+    [skip-convert] PDF already exists
+    Uploading -> pdf/99918.pdf ... done
+[999_19.epub] -> 99919.pdf
+    [skip-convert] PDF already exists
+    Uploading -> pdf/99919.pdf ... done
+[999_2.epub] -> 9992.pdf
+    [skip-convert] PDF already exists
+    Uploading -> pdf/9992.pdf ... done
+[999_20.epub] -> 99920.pdf
+    [skip-convert] PDF already exists
+    Uploading -> pdf/99920.pdf ... done
+[999_21.epub] -> 99921.pdf
+    [skip-convert] PDF already exists
+    Uploading -> pdf/99921.pdf ... done
+[999_22.epub] -> 99922.pdf
+    [skip-convert] PDF already exists
+    Uploading -> pdf/99922.pdf ... done
+[999_23.epub] -> 99923.pdf
+    [skip-convert] PDF already exists
+    Uploading -> pdf/99923.pdf ... done
+[999_24.epub] -> 99924.pdf
+    [skip-convert] PDF already exists
+    Uploading -> pdf/99924.pdf ... done
+[999_25.epub] -> 99925.pdf
+    [skip-convert] PDF already exists
+    Uploading -> pdf/99925.pdf ... done
+[999_26.epub] -> 99926.pdf
+    [skip-convert] PDF already exists
+    Uploading -> pdf/99926.pdf ... done
+[999_27.epub] -> 99927.pdf
+    [skip-convert] PDF already exists
+    Uploading -> pdf/99927.pdf ... done
+[999_28.epub] -> 99928.pdf
+    Converting... done
+    Uploading -> pdf/99928.pdf ... done
+[999_29.epub] -> 99929.pdf
+    Converting... done
+    Uploading -> pdf/99929.pdf ... done
+[999_3.epub] -> 9993.pdf
+    Converting... done
+    Uploading -> pdf/9993.pdf ... done
+[999_30.epub] -> 99930.pdf
+    Converting... done
+    Uploading -> pdf/99930.pdf ... done
+[999_31.epub] -> 99931.pdf
+    Converting... done
+    Uploading -> pdf/99931.pdf ... done
+[999_32.epub] -> 99932.pdf
+    Converting... done
+    Uploading -> pdf/99932.pdf ... done
+[999_33.epub] -> 99933.pdf
+    Converting... done
+    Uploading -> pdf/99933.pdf ... done
+[999_34.epub] -> 99934.pdf
+    Converting... done
+    Uploading -> pdf/99934.pdf ... done
+[999_35.epub] -> 99935.pdf
+    Converting...     [TIMEOUT] 999_35.epub
+[999_36.epub] -> 99936.pdf
+    Converting... done
+    Uploading -> pdf/99936.pdf ... done
+[999_37.epub] -> 99937.pdf
+    Converting... done
+    Uploading -> pdf/99937.pdf ... done
+[999_38.epub] -> 99938.pdf
+    Converting... done
+    Uploading -> pdf/99938.pdf ... done
+[999_39.epub] -> 99939.pdf
+    Converting... done
+    Uploading -> pdf/99939.pdf ... done
+[999_4.epub] -> 9994.pdf
+    Converting... done
+    Uploading -> pdf/9994.pdf ... done
+[999_40.epub] -> 99940.pdf
+    Converting... done
+    Uploading -> pdf/99940.pdf ... done
+[999_41.epub] -> 99941.pdf
+    Converting... done
+    Uploading -> pdf/99941.pdf ... done
+[999_42.epub] -> 99942.pdf
+    Converting... done
+    Uploading -> pdf/99942.pdf ... done
+[999_44.epub] -> 99944.pdf
+    Converting... done
+    Uploading -> pdf/99944.pdf ... done
+[999_45.epub] -> 99945.pdf
+    Converting... done
+    Uploading -> pdf/99945.pdf ... done
+[999_46.epub] -> 99946.pdf
+    Converting... done
+    Uploading -> pdf/99946.pdf ... done
+[999_47.epub] -> 99947.pdf
+    Converting... done
+    Uploading -> pdf/99947.pdf ... done
+[999_48.epub] -> 99948.pdf
+    Converting... done
+    Uploading -> pdf/99948.pdf ... done
+[999_49.epub] -> 99949.pdf
+    Converting... done
+    Uploading -> pdf/99949.pdf ... done
+[999_5.epub] -> 9995.pdf
+    Converting... done
+    Uploading -> pdf/9995.pdf ... done
+[999_50.epub] -> 99950.pdf
+    Converting... done
+    Uploading -> pdf/99950.pdf ... done
+[999_51.epub] -> 99951.pdf
+    Converting... done
+    Uploading -> pdf/99951.pdf ... done
+[999_52.epub] -> 99952.pdf
+    Converting... done
+    Uploading -> pdf/99952.pdf ... done
+[999_53.epub] -> 99953.pdf
+    Converting... done
+    Uploading -> pdf/99953.pdf ... done
+[999_54.epub] -> 99954.pdf
+    Converting... done
+    Uploading -> pdf/99954.pdf ... done
+[999_55.epub] -> 99955.pdf
+    Converting... done
+    Uploading -> pdf/99955.pdf ... done
+[999_56.epub] -> 99956.pdf
+    Converting... done
+    Uploading -> pdf/99956.pdf ... done
+[999_57.epub] -> 99957.pdf
+    Converting... done
+    Uploading -> pdf/99957.pdf ... done
+[999_58.epub] -> 99958.pdf
+    Converting... done
+    Uploading -> pdf/99958.pdf ... done
+[999_59.epub] -> 99959.pdf
+    Converting... done
+    Uploading -> pdf/99959.pdf ... done
+[999_6.epub] -> 9996.pdf
+    Converting... done
+    Uploading -> pdf/9996.pdf ... done
+[999_61.epub] -> 99961.pdf
+    Converting... done
+    Uploading -> pdf/99961.pdf ... done
+[999_62.epub] -> 99962.pdf
+    Converting... done
+    Uploading -> pdf/99962.pdf ... done
+[999_63.epub] -> 99963.pdf
+    Converting... done
+    Uploading -> pdf/99963.pdf ... done
+[999_64.epub] -> 99964.pdf
+    Converting... done
+    Uploading -> pdf/99964.pdf ... done
+[999_65.epub] -> 99965.pdf
+    Converting... done
+    Uploading -> pdf/99965.pdf ... done
+[999_66.epub] -> 99966.pdf
+    Converting... done
+    Uploading -> pdf/99966.pdf ... done
+[999_67.epub] -> 99967.pdf
+    Converting... done
+    Uploading -> pdf/99967.pdf ... done
+[999_68.epub] -> 99968.pdf
+    Converting... done
+    Uploading -> pdf/99968.pdf ... done
+[999_7.epub] -> 9997.pdf
+    Converting... done
+    Uploading -> pdf/9997.pdf ... done
+[999_70.epub] -> 99970.pdf
+    Converting... done
+    Uploading -> pdf/99970.pdf ... done
+[999_71.epub] -> 99971.pdf
+    Converting... done
+    Uploading -> pdf/99971.pdf ... done
+[999_72.epub] -> 99972.pdf
+    Converting... done
+    Uploading -> pdf/99972.pdf ... done
+[999_73.epub] -> 99973.pdf
+    Converting... done
+    Uploading -> pdf/99973.pdf ... done
+[999_75.epub] -> 99975.pdf
+    Converting... done
+    Uploading -> pdf/99975.pdf ... done
+[999_76.epub] -> 99976.pdf
+    Converting... done
+    Uploading -> pdf/99976.pdf ... done
+[999_77.epub] -> 99977.pdf
+    Converting... done
+    Uploading -> pdf/99977.pdf ... done
+[999_78.epub] -> 99978.pdf
+    Converting... done
+    Uploading -> pdf/99978.pdf ... done
+[999_79.epub] -> 99979.pdf
+    Converting... done
+    Uploading -> pdf/99979.pdf ... done
+[999_8.epub] -> 9998.pdf
+    Converting...     [TIMEOUT] 999_8.epub
+[999_80.epub] -> 99980.pdf
+    Converting... done
+    Uploading -> pdf/99980.pdf ... done
+[999_81.epub] -> 99981.pdf
+    Converting... done
+    Uploading -> pdf/99981.pdf ... done
+[999_82.epub] -> 99982.pdf
+    Converting... done
+    Uploading -> pdf/99982.pdf ... done
+[999_83.epub] -> 99983.pdf
+    Converting... done
+    Uploading -> pdf/99983.pdf ... done
+[999_84.epub] -> 99984.pdf
+    Converting... done
+    Uploading -> pdf/99984.pdf ... done
+[999_85.epub] -> 99985.pdf
+    Converting... done
+    Uploading -> pdf/99985.pdf ... done
+[999_87.epub] -> 99987.pdf
+    Converting... done
+    Uploading -> pdf/99987.pdf ... done
+[999_9.epub] -> 9999.pdf
+    Converting... done
+    Uploading -> pdf/9999.pdf ... done
+[999_90.epub] -> 99990.pdf
+    Converting... done
+    Uploading -> pdf/99990.pdf ... done
+[999_91.epub] -> 99991.pdf
+    Converting... done
+    Uploading -> pdf/99991.pdf ... done
+[999_92.epub] -> 99992.pdf
+    Converting... done
+    Uploading -> pdf/99992.pdf ... done
+[999_93.epub] -> 99993.pdf
+    Converting... done
+    Uploading -> pdf/99993.pdf ... done
+[999_95.epub] -> 99995.pdf
+    Converting... done
+    Uploading -> pdf/99995.pdf ... done
+[999_96.epub] -> 99996.pdf
+    Converting... done
+    Uploading -> pdf/99996.pdf ... done
+[999_97.epub] -> 99997.pdf
+    Converting... done
+    Uploading -> pdf/99997.pdf ... done
+[999_98.epub] -> 99998.pdf
+    Converting... done
+    Uploading -> pdf/99998.pdf ... done
+[999_99.epub] -> 99999.pdf
+    Converting... done
+    Uploading -> pdf/99999.pdf ... done
+
+Finished.
+  Converted/uploaded : 111
+  Skipped (existing) : 21
+  Failed             : 2
