@@ -15,9 +15,9 @@ apt-get update -qq
 apt-get install -y ffmpeg python3-pip python3-venv git wget unzip
 
 echo "=== [2/6] Installing Playwright system deps ==="
-apt-get install -y libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 \
+apt-get install -y libnss3 libatk1.0-0t64 libatk-bridge2.0-0t64 libcups2t64 \
     libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxfixes3 \
-    libxrandr2 libgbm1 libpango-1.0-0 libcairo2 libasound2
+    libxrandr2 libgbm1 libpango-1.0-0 libcairo2 libasound2t64
 
 echo "=== [3/6] Clone or pull repo ==="
 if [ -d "$APP_DIR/.git" ]; then
